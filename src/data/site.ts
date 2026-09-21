@@ -32,7 +32,7 @@ export const site = {
   description:
     'Software engineer and occasional traveler — writing about code and sharing photos from the road.',
   /** Your production URL — no trailing slash. Used for canonical URLs, OG tags, RSS and sitemap */
-  url: 'https://example.com',
+  url: 'https://ttticia.github.io',
   author: {
     name: 'Tricia Ng',
     email: 'ng.tricia2005@gmail.com',
