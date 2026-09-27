@@ -5,7 +5,7 @@ import { site, withBase } from '../data/site';
 const navLinks = [
   { href: '/', label: 'Home' },
   { href: '/resume', label: 'Resume' },
-  { href: '/blog', label: 'Projects' },
+  { href: '/projects', label: 'Projects' },
   // { href: '/travel', label: 'Travel' },
 ].map((l) => ({ ...l, href: withBase(l.href) }));
 ---

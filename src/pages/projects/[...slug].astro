@@ -1,0 +1,90 @@
+---
+import Layout from '../../components/Layout.astro';
+import Icon from '../../components/Icon.astro';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import { site, withBase } from '../../data/site';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects', ({ data }) => !data.draft);
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}
+
+type Props = {
+  project: CollectionEntry<'projects'>;
+};
+
+const { project } = Astro.props;
+
+const { Content } = await render(project);
+
+const allPosts = (await getCollection('projects', ({ data }) => !data.draft)).sort(
+  (a, b) => Date.parse(String(b.data.start)) - Date.parse(String(a.data.start)),
+);
+const idx = allPosts.findIndex((p) => p.id === project.id);
+const prev = idx > 0 ? allPosts[idx - 1] : undefined;
+const next = idx >= 0 && idx < allPosts.length - 1 ? allPosts[idx + 1] : undefined;
+
+const description = project.data.description ?? project.data.subtitle ?? `${project.data.title}`;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: project.data.title,
+  description,
+  url: `${site.url}${withBase(`/project/${project.id}/`)}`,
+};
+
+const thumb = project.data.thumbNail
+  ?.replace(/^public[\\/]/, '/')
+---
+
+<Layout
+  title={project.data.title}
+  description={description}
+  type="article"
+  image={project.data.thumbNail ?? '/img/og.jpg'}
+  canonical={`${site.url}/projects/${project.id}/`}
+  jsonLd={jsonLd}
+>
+  <article class="section">
+    <div class="container">
+      <nav aria-label="Breadcrumb" style="margin-bottom: 1.5rem;">
+        <a href={withBase('/projects')}><Icon name="arrow-left" size={14} /> Back to projects</a>
+      </nav>
+
+      <header style="max-width: 70ch;">
+        <div class="post-meta">
+          <span class="meta">{project.data.start} - {project.data.end?project.data.end:'Present'}</span>
+          <span class="dot">·</span>
+          <span class="category-badge {project.data.category}">{project.data.category}</span>
+        </div>
+        <h1 class="proj-title">{project.data.title}</h1>
+        {project.data.subtitle && <p class="muted" style="font-size: 1.1rem;">{project.data.subtitle}</p>}
+        {project.data.tags.length > 0 && (
+          <div class="tag-list">
+            {project.data.tags.map((t) => <a class="tag" href={withBase(`/projects/tags/${t}/`)}>#{t}</a>)}
+          </div>
+        )}
+      </header>
+
+      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        {thumb &&
+          <img style="margin-top: 2rem;" src={withBase(thumb)} alt={project.data.title} />
+        }
+      </div>
+
+      <div class="prose" style="margin-top: 2rem;">
+        <Content/>
+      </div>
+
+      <nav aria-label="Post navigation" class="pagination" style="justify-content: space-between; margin-top: 3rem;">
+        {next && <a href={withBase(`/blog/${next.id}/`)} style="display: inline-flex; align-items: center; gap: 0.5rem;"><Icon name="arrow-left" size={16} /> {next.data.title}</a>}
+        {prev && <a href={withBase(`/blog/${prev.id}/`)} style="display: inline-flex; align-items: center; gap: 0.5rem; margin-left: auto;">{prev.data.title} <Icon name="arrow-right" size={16} /></a>}
+      </nav>
+    </div>
+  </article>
+</Layout>

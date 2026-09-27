@@ -28,16 +28,19 @@ const dateFmt = new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'shor
         </>
       )}
     </div>
-    <h3>{post.data.title}</h3>
-    {post.data.subtitle && <p class="post-sub">{post.data.subtitle}</p>}
-    <p class="post-excerpt">
-      {(post.data.description ?? post.body ?? '').slice(0, 200)}
-      {((post.data.description ?? post.body ?? '').length > 200 ? '…' : '')}
-    </p>
-    {post.data.tags.length > 0 && (
-      <div class="tag-list">
-        {post.data.tags.map((t) => <span class="tag">{t}</span>)}
+      <img class="hero-avatar" src={withBase('/img/avatar.svg')} alt={`Project image`} width="220" height="220" />
+      <div>
+      <h3>{post.data.title}</h3>
+      {post.data.subtitle && <p class="post-sub">{post.data.subtitle}</p>}
+      <p class="post-excerpt">
+        {(post.data.description ?? post.body ?? '').slice(0, 200)}
+        {((post.data.description ?? post.body ?? '').length > 200 ? '…' : '')}
+      </p>
+      {post.data.tags.length > 0 && (
+        <div class="tag-list">
+          {post.data.tags.map((t) => <span class="tag">{t}</span>)}
       </div>
     )}
+    </div>
   </a>
 </article>

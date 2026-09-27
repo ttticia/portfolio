@@ -1,0 +1,41 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { withBase } from '../data/site';
+
+type Project = CollectionEntry<'projects'>;
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+const thumb = project.data.thumbNail
+  ?.replace(/^public[\\/]/, '/')
+---
+
+<article>
+  <a class="post-card" href={withBase(`/projects/${project.id}/`)}>
+    <div class="post-meta">
+      <span class="meta">{project.data.start} - {project.data.end?project.data.end:'Present'}</span>
+      <span class="dot">·</span>
+      <span class="category-badge {project.data.category}">{project.data.category}</span>
+    </div>
+    
+    <div class="proj-grid">
+      <div>
+      <h3>{project.data.title}</h3>
+      {project.data.subtitle && <p class="post-sub">{project.data.subtitle}</p>}
+      <p class="post-excerpt">
+        {(project.data.description ?? project.body ?? '').slice(0, 200)}
+        {((project.data.description ?? project.body ?? '').length > 200 ? '…' : '')}
+      </p>
+      {project.data.tags.length > 0 && (
+        <div class="tag-list">
+          {project.data.tags.map((t) => <span class="tag">{t}</span>)}
+        </div>
+      )}
+    </div>
+      {thumb && <img src={withBase(thumb)} alt="Project preview" loading="lazy" />}
+    </div>
+  </a>
+</article>

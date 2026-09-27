@@ -6,7 +6,6 @@ export interface SocialLink {
   icon?:
     | 'github'
     | 'linkedin'
-    | 'instagram'
     | 'email'
     | 'rss'
     | 'download'
@@ -30,7 +29,7 @@ export const site = {
   shortTitle: 'tricia_ng_portfolio',
   /** Default meta description for pages that don't set their own */
   description:
-    'Software engineer and occasional traveler — writing about code and sharing photos from the road.',
+    'Mechanical Engineering student',
   /** Your production URL — no trailing slash. Used for canonical URLs, OG tags, RSS and sitemap */
   url: 'https://ttticia.github.io',
   author: {
@@ -43,7 +42,6 @@ export const site = {
   socials: {
     github: { url: 'https://github.com/ttticia', label: 'GitHub', icon: 'github' },
     linkedin: { url: 'https://www.linkedin.com/in/tricia-ng-pr0f1l3/', label: 'LinkedIn', icon: 'linkedin' },
-    instagram: { url: 'https://www.instagram.com', label: 'Instagram', icon: 'instagram' },
     email: { url: 'mailto:ng.tricia2005@gmail.com', label: 'Email', icon: 'email' },
   } satisfies Record<string, SocialLink>,
 };
