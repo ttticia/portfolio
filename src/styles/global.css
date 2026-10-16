@@ -637,7 +637,7 @@ html[data-theme='dark'] .badge { color: var(--accent); }
 
 .edu-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(2, minmax(0.5vw, 1fr));
   gap: 1.25rem;
 }
 
@@ -649,9 +649,46 @@ html[data-theme='dark'] .badge { color: var(--accent); }
   box-shadow: var(--shadow-sm);
 }
 
-.card h3 { margin-bottom: 0.15rem; }
+.card h3 { margin-bottom: 0.15rem; color: var(--accent); }
 
-.card .muted { color: var(--muted); }
+.card .muted { 
+  color: var(--muted); 
+  font-family: var(--font-mono); 
+  font-size: 0.8rem; 
+  margin: 0 0 0.4rem;
+}
+
+.card .subtitle {
+  margin: 0 0 0.2rem; 
+  font-weight: 600; 
+  color: var(--text-strong);
+}
+
+/* ==========================================================================
+   Extra-Curriculars
+   ========================================================================== */
+
+.extra-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+.card-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-left: auto;
+  border-radius: var(--radius-lg);
+}
+
+.card li {
+  font-family: var(--font-mono); 
+  margin-bottom: 0.35rem;
+  color: var(--muted);
+  font-size: 0.74rem;
+  margin: 0 1rem;
+}
 
 /* ==========================================================================
    Skills
@@ -803,7 +840,11 @@ html[data-theme='dark'] .badge { color: var(--accent); }
 
 .post-meta .dot { opacity: 0.5; }
 
-.post-excerpt { color: var(--muted); margin: 0.75rem 0 0; font-size: 0.95rem; }
+.post-excerpt { 
+  color: var(--muted); 
+  margin: 1.1rem 0 0; 
+  font-size: 0.9rem; 
+}
 
 .tag-list {
   display: flex;
@@ -909,6 +950,21 @@ html[data-theme='dark'] .category-badge.tech { color: var(--accent); }
 /* ==========================================================================
    Project prose
    ========================================================================== */
+.prose .solo-image {
+  margin: 0 0.5rem 0 2rem;
+  background: var(--surface-2);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+  align-items: center;
+  float: right;
+}
+
+.prose .solo-image img {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: contain;
+}
+
 .prose .multi-image {
   display: grid;
   grid-auto-flow: column;
@@ -934,6 +990,7 @@ html[data-theme='dark'] .category-badge.tech { color: var(--accent); }
   object-fit: contain;
 }
 
+.prose .solo-image figcaption,
 .prose .multi-image figcaption{
   text-align: center;
   width: 100%;

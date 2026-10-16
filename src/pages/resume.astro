@@ -4,9 +4,8 @@ import Experience from '../components/Experience.astro';
 import Education from '../components/Education.astro';
 import Skills from '../components/Skills.astro';
 import { site, withBase } from '../data/site';
-import { experience } from '../data/resume';
+import ExtraCirriculars from '../components/ExtraCirriculars.astro';
 
-const current = experience[0];
 const links = Object.values(site.socials).filter((s) => s.url.startsWith('http') || s.url.startsWith('mailto'));
 ---
 
@@ -34,6 +33,8 @@ const links = Object.values(site.socials).filter((s) => s.url.startsWith('http')
   <Experience />
 
   <Education />
+
+  <ExtraCirriculars />
 
   <Skills />
 </Layout>

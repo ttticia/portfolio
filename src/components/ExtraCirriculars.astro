@@ -1,0 +1,32 @@
+---
+import { ExtraCurriculars } from '../data/resume';
+---
+
+<section class="section" id="extra-curriculars">
+  <div class="container">
+    <p class="eyebrow">What I do outside of work/studies</p>
+    <h2 class="section-heading">Extra-Curricular Activities</h2>
+    <div class="extra-grid">
+      {
+        ExtraCurriculars.map((e) => (
+          <div class="card">
+            <div style="display: flex;">
+              <div>
+                <p class="muted">
+                  {e.start} – {e.end}
+                </p>
+                <h3>{e.name}</h3>
+                <p class="subtitle">{e.role}</p>
+                <p class="muted" style="margin-bottom: 1rem;">{e.summary}</p>
+                <ul class="timeline-bullets">
+                  {e.bullets.map((b) => <li>{b}</li>)}
+                </ul>
+              </div>
+              <img src={e.image} alt={e.name} class="card-img" />
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

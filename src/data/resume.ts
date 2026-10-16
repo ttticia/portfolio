@@ -19,6 +19,16 @@ export interface Education {
   end: string;
 }
 
+export interface ExtraCurriculars {
+  name: string;
+  role: string;
+  start: string;
+  end: string;
+  summary: string;
+  bullets: string[];
+  image: string;
+}
+
 export interface SkillGroup {
   title: string;
   skills: string[];
@@ -52,15 +62,10 @@ export const experience: Experience[] = [
     summary: 'Mentored team of 6 students ages 15-17 through design thinking process.',
     bullets: [
       'Guided 8 secondary, JC and polytechnic students through design thinking to develop a prototype aimed at increasing airflow in HDB units',
-      'Work in partnership with Housing Development Board (HDB) to evaluate feasability of proposed solutions',
+      'Work in partnership with Housing Development Board (HDB) to evaluate feasibility of proposed solutions',
     ],
     badges: ['Mentorship', 'Design Thinking', 'Leadership'],
   }
-];
-
-/** Smaller/older roles — rendered as compact rows under the main timeline */
-export const earlierRoles: { role: string; company: string; start: string; end: string }[] = [
-  { role: 'Engineering Intern', company: 'Some Company', start: '2020', end: '2021' },
 ];
 
 export const education: Education[] = [
@@ -68,7 +73,7 @@ export const education: Education[] = [
     degree: 'Bachelor of Engineering, Honours',
     field: 'Engineering Product Design (Mechanical Engineering Track)',
     school: 'Singapore University of Engineering and Design',
-    start: '2023',
+    start: 'Sep 2023',
     end: 'present',
   },
   {
@@ -82,8 +87,49 @@ export const education: Education[] = [
     degree: 'International Baccalaureate Diploma',
     field: '',
     school: 'Antwerp International School',
-    start: '2019',
-    end: '2023',
+    start: 'Mar 2019',
+    end: 'May 2023',
+  }
+];
+
+/** Work history — newest first. Shown on /work */
+export const ExtraCurriculars: ExtraCurriculars[] = [
+  {
+    name: 'Singapore Association for the Visually Handicapped (SAVH)',
+    role: 'Volunteer',
+    start: 'Jul 2026',
+    end: 'Sep 2026',
+    summary: 'Assist visually handicapped individuals',
+    bullets: [
+      'facilitating activities for visually impaired individuals, such as karaoke, board games and ukelele classes'
+    ],
+    image: '\img/extraCuriculars/SAVH.png'
+  },
+
+  {
+    name: 'SUTD Organization of Autonomous Robotics (SOAR)',
+    role: 'Secretary',
+    start: 'Mar 2023',
+    end: 'Mar 2024',
+    summary: 'Manage club operations, including events planning and membership.',
+    bullets: [
+      'Collaborated with logistics to prepare for events, such as the 14 team line-tracing competition SOAR challenge 2024',
+      'Organize workshops and projects sharing sessions, increasing active members by more than 30%'
+    ],
+    image: '\img/extraCuriculars/soar.png'
+  },
+
+  {
+    name: 'SUTD Scratch',
+    role: 'Treasurer',
+    start: 'Mar 2023',
+    end: 'Mar 2024',
+    summary: 'Oversee club finances and ensure financial records are up to date.',
+    bullets: [
+      'Manage club budget using Excel',
+      'Assist in club events, such as Freshman Orientation 2024, as stage crew'
+    ],
+    image: '\img/extraCuriculars/scratch.jpg'
   }
 ];
 
@@ -100,12 +146,4 @@ export const skillGroups: SkillGroup[] = [
     title: 'Interests',
     skills: ['Product design', 'Electronic music'],
   },
-];
-
-/** Words typed out one character at a time in the hero */
-export const typingRoles = [
-  'software engineer',
-  'occasional photographer',
-  'weekend hiker',
-  'coffee enthusiast',
 ];
