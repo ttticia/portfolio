@@ -103,7 +103,7 @@ export const ExtraCurriculars: ExtraCurriculars[] = [
     bullets: [
       'facilitating activities for visually impaired individuals, such as karaoke, board games and ukelele classes'
     ],
-    image: '\img/extraCuriculars/SAVH.png'
+    image: './img/extraCuriculars/SAVH.png'
   },
 
   {
@@ -116,7 +116,7 @@ export const ExtraCurriculars: ExtraCurriculars[] = [
       'Collaborated with logistics to prepare for events, such as the 14 team line-tracing competition SOAR challenge 2024',
       'Organize workshops and projects sharing sessions, increasing active members by more than 30%'
     ],
-    image: '\img/extraCuriculars/soar.png'
+    image: './img/extraCuriculars/soar.png'
   },
 
   {
@@ -129,7 +129,7 @@ export const ExtraCurriculars: ExtraCurriculars[] = [
       'Manage club budget using Excel',
       'Assist in club events, such as Freshman Orientation 2024, as stage crew'
     ],
-    image: '\img/extraCuriculars/scratch.jpg'
+    image: './img/extraCuriculars/scratch.jpg'
   }
 ];
 
