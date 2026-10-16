@@ -13,7 +13,7 @@ import { education } from '../data/resume';
             <p class="muted">
               {e.start} – {e.end}
             </p>
-            <h3>{e.degree}</h3>
+            <h3 class={`${e.end.toLowerCase() === "present" ? 'current' : ''}`}>{e.degree}</h3>
             <p class="subtitle">{e.field}</p>
             <p class="muted" style="margin: 0;">{e.school}</p>
           </div>

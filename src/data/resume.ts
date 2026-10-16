@@ -83,6 +83,15 @@ export const education: Education[] = [
     start: 'Feb 2026',
     end: 'Jun 2026',
   },
+
+  {
+    degree: 'Summer Program',
+    field: 'Social Psychology',
+    school: 'Yonsei University',
+    start: 'Mar 2019',
+    end: 'May 2023',
+  },
+
   {
     degree: 'International Baccalaureate Diploma',
     field: '',
